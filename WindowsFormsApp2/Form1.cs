@@ -21,10 +21,10 @@ namespace WindowsFormsApp2
         {
             this.MaximumSize = new Size(9000, 1100);
             this.MinimumSize = new Size(800, 900);
-            
+           //this.BackgroundImage = Image.FromFile("C:\\Users\\Mirage\\Desktop\\p.jpg");// Тут твое расположение на фон
             this.DoubleBuffered = true;
             
-            Bab.Image = Image.FromFile(@"C:\Users\Aogiri\source\repos\WindowsFormsApp2\WindowsFormsApp2\butterfly\butterfly.png");
+            Bab.Image = Image.FromFile(@"C:\Users\Aogiri\source\repos\WindowsFormsApp2\WindowsFormsApp2\butterfly\butterfly.png"); // Тут ты свое расположение изображения
             Bab.SizeMode = PictureBoxSizeMode.StretchImage;
             Bab.BorderStyle = BorderStyle.None;
             Bab.BackColor = Color.Transparent;
@@ -32,7 +32,21 @@ namespace WindowsFormsApp2
             Bab.MouseMove += new MouseEventHandler(Bab_MouseMove);
             //this.MouseMove += new MouseEventHandler(Form1_MouseMove);
             Bab.MouseLeave += new EventHandler(Bab_MouseLeave);
+            Bab.MouseDown += new MouseEventHandler(Bab_MouseDown);
+            Bab.MouseUp += new MouseEventHandler(Bab_MouseUp);
         }
+
+        private void Bab_MouseUp(object sender, MouseEventArgs e)
+        {
+            ispressed = false;
+        }
+
+        private bool ispressed = false;
+        private void Bab_MouseDown(object sender, EventArgs e)
+        {
+            ispressed = true;
+        }
+
         private bool isMove = false;
 
 
@@ -48,7 +62,7 @@ namespace WindowsFormsApp2
 
         private void Bab_MouseMove(object sender, MouseEventArgs e)
         {
-            if (isMove)
+            if (isMove && ispressed)
             {
                 Control control = (Control)sender;
 
