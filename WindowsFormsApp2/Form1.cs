@@ -24,7 +24,7 @@ namespace WindowsFormsApp2
            //this.BackgroundImage = Image.FromFile("C:\\Users\\Mirage\\Desktop\\p.jpg");// Тут твое расположение на фон
             this.DoubleBuffered = true;
             
-            Bab.Image = Image.FromFile(@"C:\Users\Aogiri\source\repos\WindowsFormsApp2\WindowsFormsApp2\butterfly\butterfly.png"); // Тут ты свое расположение изображения
+            Bab.Image = Image.FromFile("../../butterfly/butterfly.png"); // Тут ты свое расположение изображения
             Bab.SizeMode = PictureBoxSizeMode.StretchImage;
             Bab.BorderStyle = BorderStyle.None;
             Bab.BackColor = Color.Transparent;
@@ -74,10 +74,11 @@ namespace WindowsFormsApp2
                 double slowDownFactor = 0.05;
 
 
-                int newX = control.Left + (int)(dx * slowDownFactor);
-                int newY = control.Top + (int)(dy * slowDownFactor);
+                // int newX = control.Left + (int)(dx * slowDownFactor);
+                // int newY = control.Top + (int)(dy * slowDownFactor);
 
-
+                int newX = MousePosition.X;
+                int newY = MousePosition.Y;
                 control.Left = newX;
                 control.Top = newY;
             }
